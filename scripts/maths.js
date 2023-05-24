@@ -52,3 +52,7 @@ function softmax(z) {
   }
   return data;
 }
+
+function back_propogation() {
+  
+}
