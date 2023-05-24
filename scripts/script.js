@@ -119,15 +119,15 @@ function neural_network_main() {
   W_3_function_random_no();
   B_3_function_random_no();
 
-  // console.log(W_1)
+  console.log(W_1)
   
   A_1 = forward_propogation(A_0, W_1, B_1, "TanH")
   A_2 = forward_propogation(A_1, W_2, B_2, "TanH")
   A_3 = forward_propogation(A_2, W_3, B_3,"TanH")
-document.write(A_0);
-  // console.log(A_1);
-  // console.log(A_2);
-  // console.log(A_3);
-  // console.log(softmax(A_3));
+// document.write(A_0);
+  console.log(A_1);
+  console.log(A_2);
+  console.log(A_3);
+  console.log(softmax(A_3));
 }
 
