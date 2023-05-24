@@ -2,7 +2,7 @@ console.clear()
 console.error("Don't write any improper code in the console other wise your system will crash because of loops")
 console.warn(`MIT License
 
-Copyright (c) 2023 AkhilAndPaarthCo.
+Copyright (c) 2023 AkhilSirvi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
