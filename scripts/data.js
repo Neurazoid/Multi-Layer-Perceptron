@@ -136,4 +136,3 @@ let Neural_Network_Train_Data = {
 
 
 }
-console.log(Neural_Network_Train_Data[0])

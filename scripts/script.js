@@ -1,4 +1,5 @@
 let second_box = document.getElementById("second");
+let output_text = document.getElementById("output_text");
 
 function pixel_creater() {
   for (let pixel_creater_i = 0; pixel_creater_i < 400; pixel_creater_i++) {
@@ -128,6 +129,15 @@ function neural_network_main() {
   console.log(A_1);
   console.log(A_2);
   console.log(A_3);
-  console.log(softmax(A_3));
+  console.log(softmax(A_3))
+
+
+  let softmax_output = softmax(A_3)
+  for (let j = 0; j < softmax_output.length; j++) {
+    if (softmax_output[j] == Math.max.apply(null, softmax_output)) {
+      output_text.innerHTML = "The output is "  + j
+    }
+  }
+
 }
 
