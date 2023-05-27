@@ -54,6 +54,17 @@ h3 {
   background: #699f6f;
   
 }
+
+#traindatabutton{
+  height:min-content;
+  padding: 20px;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #699f6f;
+
+}
 .box {
   width: 20px;
   height: 20px;
