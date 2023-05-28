@@ -52,3 +52,35 @@ function softmax(z) {
   }
   return data;
 }
+
+
+function matrix_multipilcation_with_transpose(M1, M2) {
+  let output = [];
+  let rows1 = M1.length
+  let rows2 = M2.length
+  let colum1 = M1[0].length
+  let colum2 = M2[0].length
+  if (rows1 !== colum2) {
+    console.log("Error: The number of columns in Matrix 1 must match the number of rows in Matrix 2.");
+    return output;
+  }
+  for (let a = 0; a < colum1; a++) {
+    output[a] = [];
+    for (let b = 0; b < rows2; b++) {
+      let sum = 0
+      for (let c = 0; c < colum1; c++) {
+        sum += M1[c][a] * M2[b][c]
+      }
+      output[a][b] = sum
+    }
+  }
+  return output;
+}
+
+function transposeMatrix(matrix) {
+  const transposedMatrix = matrix[0].map((_, colIndex) =>
+    matrix.map((row) => row[colIndex])
+  );
+
+  return transposedMatrix;
+}

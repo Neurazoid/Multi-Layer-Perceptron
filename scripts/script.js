@@ -60,8 +60,8 @@ let W_3 = [];
 let B_1 = [];
 let B_2 = [];
 let B_3 = [];
-
-let alpha = 2;
+// alpha is the learning rate
+let alpha = 0.01;
 
 function W_1_function_random_no() {
   let W_1_length = A_1_length * A_0_length;
@@ -110,53 +110,68 @@ B_3_function_random_no();
 
 let dZ3 = [];
 let dW3 = [];
-let dB3 = null;
+let dB3 = [];
 let dZ2 = null;
 let dW2 = null;
 let dB2 = null;
 let dZ1 = null;
 let dW1 = null;
 let dB1 = null;
+let train_data_length = Object.keys(Neural_Network_Train_Data).length;
+let m = train_data_length
 function train_neural_network() {
-
+// const sum = dZ3[g].reduce((accumulator, currentValue) => {return accumulator + currentValue;}, 0);
   function back_propogation() {
-    let train_data_length = Object.keys(Neural_Network_Train_Data).length;
     
-
     let xA_1;
     let xA_2;
     let xA_3;
+    let total_xA_2 = [];
     let softmax_xA_3;
+
+
     // this is used for dZ3 calculation
     for (const key in Neural_Network_Train_Data) {
       xA_1 = forward_propogation(Neural_Network_Train_Data[key][0], W_1, B_1, "TanH");
       xA_2 = forward_propogation(xA_1, W_2, B_2, "TanH");
+      total_xA_2.push(xA_2)
       xA_3 = forward_propogation(xA_2, W_3, B_3, "TanH");
       softmax_xA_3 = softmax(xA_3)
       softmax_xA_3[Neural_Network_Train_Data[key][1]] = (softmax_xA_3[Neural_Network_Train_Data[key][1]]) - 1
       dZ3.push(softmax_xA_3)
     }
+  
+    let multiply_dZ3_xA_2T;
+    multiply_dZ3_xA_2T = matrix_multipilcation_with_transpose(dZ3,transposeMatrix(total_xA_2))
+
+    
+    
+    for (let m = 0; m < multiply_dZ3_xA_2T.length; m++) {
+      let divide_by_m = [];
+      for (let l = 0; l < multiply_dZ3_xA_2T[m].length; l++) {
+        divide_by_m.push((multiply_dZ3_xA_2T[m][l])/10)
+      }
+      dW3.push(divide_by_m)
+    }
+    
+    
+    
+    let transpose_dZ3 = transposeMatrix(dZ3)
+    
+
+    for (let v = 0; v < transpose_dZ3.length; v++) {
+      let sum = 0;
+      sum = transpose_dZ3[v].reduce((accumulator, currentValue) => {
+        return accumulator + currentValue;
+      }, 0);
+      dB3.push(sum)
+    }
+
     console.log(dZ3)
-    
-    let xdZ3_sum_row_wise = [];
-    for (let g = 0; g < train_data_length; g++) {
-      const sum = dZ3[g].reduce((accumulator, currentValue) => {return accumulator + currentValue;}, 0);
-      xdZ3_sum_row_wise.push(sum);
-    }
-    
+    console.log(dW3)
+    console.log(dB3)
 
-    let avg_xdZ3_row_wise = [];
-    for (let l = 0; l < train_data_length; l++) {
-      avg_xdZ3_row_wise.push((xdZ3_sum_row_wise[l] ) / train_data_length);
-    }
-    console.log(avg_xdZ3_row_wise)
-
-    // We have to transpose then multiply
-    // for (let h = 0; h < ; h++) {
-      
-      
-    // }
-      
+    //last end of back prop
 
     
   }
