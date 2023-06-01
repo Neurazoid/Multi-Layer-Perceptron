@@ -74,3 +74,31 @@ h3 {
 .box:hover {
   background-color: blue;
 }
+#loadbar{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 100px;
+  background: white;
+  border: 3px solid black;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+}
+
+#loadbartitle{
+  width: 100%;
+  text-align: center;
+  height: 30px;
+  font-size: 20px;
+
+}
+#loadbarmain{
+  width: 90%;
+  height: 100%;
+  margin: 20px;
+  box-sizing: border-box;
+  background: black;
+}

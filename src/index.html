@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>NEURAL NETWORK SYSTEM</title>
+    <script src="../scripts/data.js"></script>
 </head>
 <body>
     <h1>NEURAL NETWORK SYSTEM</h1>
     <h3>Created By Akhil Sirvi </h3>
-    <h3>You can enter a single digit number by drawing and the neural network program will give the output based on the accuracy, for now the accuracy is random because back propogation is under development</h3>
+    <h3>You can enter a single digit number by drawing and the neural network program will give the output based on the accuracy You have to click the train button to train the network it will take 10 minutes to train by mnist dataset</h3>
     <div id="main_container">
         <div id="first">
             <h3>Output:</h3>  <div id="output_text"></div>
@@ -18,11 +19,23 @@
         <div id="second">
         </div>
         <button onclick="neural_network_main()" id="enterdatabutton">Enter you written data</button>
-        <button onclick="train_neural_network()" id="traindatabutton">Train the neural network</button>
+        <button onclick="train_button()" id="traindatabutton">Train the neural network</button>
     </div>
+    <div id="loadbar">
+        <div id="loadbartitle">Training Process</div>
+        <div id="loadbarmain"></div>
+    </div>
+    <script src="../scripts/maths.js" defer></script>
     
-    <script src="../scripts/data.js"></script>
-    <script src="../scripts/maths.js"></script>
-    <script src="../scripts/script.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Include the second JavaScript file dynamically
+            let script = document.createElement("script");
+            script.src = "../scripts/script.js";
+            document.body.appendChild(script);
+            
+        });
+    </script>
 </body>
 </html>
