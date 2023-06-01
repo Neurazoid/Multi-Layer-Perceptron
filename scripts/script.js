@@ -129,8 +129,8 @@ function train_neural_network() {
     let total_xA_1 = [];
     let total_xA_2 = [];
     let softmax_xA_3;
-
-
+    let cost_data = [];
+    
     // this is used for dZ3 calculation
     for (const key in Neural_Network_Train_Data) {
       xA_0 = Neural_Network_Train_Data[key][0]
@@ -141,10 +141,21 @@ function train_neural_network() {
       total_xA_2.push(xA_2)
       xA_3 = forward_propogation(xA_2, W_3, B_3, "TanH");
       softmax_xA_3 = softmax(xA_3)
+      othersoftmax = softmax(xA_3)
       softmax_xA_3[Neural_Network_Train_Data[key][1]] = (softmax_xA_3[Neural_Network_Train_Data[key][1]]) - 1
       dZ3.push(softmax_xA_3)
+
+      cost_data.push((othersoftmax[Neural_Network_Train_Data[key][1]]) * 1)
+
+    }
+    let new_cost = 0;
+    for (let gh = 0; gh < cost_data.length; gh++) {
+      new_cost = new_cost + cost_data[gh]
     }
 
+    new_cost = new_cost/m
+
+    console.log("the cost is " + new_cost)
     // this is used of dW3 calculation
     let multiply_dZ3_xA_2T;
     multiply_dZ3_xA_2T = matrix_multipilcation_with_transpose(dZ3,transposeMatrix(total_xA_2))
