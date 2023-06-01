@@ -153,7 +153,7 @@ function train_neural_network() {
       new_cost = new_cost + cost_data[gh]
     }
 
-    new_cost = new_cost/m
+    new_cost = -(new_cost/m)
 
     console.log("the cost is " + new_cost)
     // this is used of dW3 calculation
