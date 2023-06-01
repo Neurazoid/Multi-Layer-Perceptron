@@ -148,12 +148,17 @@ function train_neural_network() {
       cost_data.push((othersoftmax[Neural_Network_Train_Data[key][1]]) * 1)
 
     }
+    let negative_cost = [];
+    for (let jk = 0; jk < cost_data.length; jk++) {
+      negative_cost.push(-(cost_data[jk]))
+    }
+    console.log(negative_cost)
     let new_cost = 0;
-    for (let gh = 0; gh < cost_data.length; gh++) {
-      new_cost = new_cost + cost_data[gh]
+    for (let gh = 0; gh < negative_cost.length; gh++) {
+      new_cost = new_cost + negative_cost[gh]
     }
 
-    new_cost = -(new_cost/m)
+    new_cost = new_cost/m
 
     console.log("the cost is " + new_cost)
     // this is used of dW3 calculation
