@@ -287,6 +287,9 @@ function train_neural_network() {
 }
 
 function neural_network_main() {
+  setInterval(()=>{
+
+  
   button.forEach((button) => {
     if (button.style.background != "black") {
       A_0.push(0);
@@ -324,6 +327,7 @@ function neural_network_main() {
   A_1 = []
   A_2 = []
   A_3 = []
+},100)
   button.forEach((button) => { 
     button.style.background = `white`;
   });
