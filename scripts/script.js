@@ -312,6 +312,14 @@ function neural_network_main() {
     }
   }
   
+  let percentageoutput = convertToPercentages(softmax(A_3));
+  let percentageoutput_index = percentageoutput.map(item => item.index); 
+  let percentageoutput_percent = percentageoutput.map(item => item.percentage); 
+  for (let u = 0; u < percentageoutput.length; u++) {
+    output_text.innerHTML += "<br>" + percentageoutput_index[u] + "=" + percentageoutput_percent[u];
+    
+  }
+
   A_0 = []
   A_1 = []
   A_2 = []
@@ -323,9 +331,12 @@ function neural_network_main() {
 let training_length = 20;
 let loadpercent = 0;
 loadbar.style.width = "calc(90%/" + training_length + "*" +  loadpercent + ")"
+
+let train_interval = null;
+
 function train_button() {
   loadbarcontain.style.display = "flex"
-  let train_interval = setInterval(()=>{
+  train_interval = setInterval(()=>{
     train_neural_network()
     
     dZ3 = [];

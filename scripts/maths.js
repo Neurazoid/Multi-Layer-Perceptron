@@ -119,3 +119,19 @@ function B_update(intialmatrix, learning_rate, backpropvalue) {
   let result = intialmatrix.map((value, index) => value - multipliedMatrix[index]);
   return result;
 }
+
+function convertToPercentages(arr) {
+  // Calculate the sum of all numbers in the array
+  const sum = arr.reduce((total, num) => total + num, 0);
+
+  // Convert each number into percentage by multiplying it by 100
+  const percentages = arr.map((num, index) => ({
+    index: index,
+    percentage: (num / sum) * 100
+  }));
+
+  // Sort the percentages in descending order based on the percentage value
+  percentages.sort((a, b) => b.percentage - a.percentage);
+
+  return percentages;
+}
