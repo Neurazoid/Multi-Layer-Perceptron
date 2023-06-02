@@ -148,17 +148,14 @@ function train_neural_network() {
       cost_data.push((othersoftmax[Neural_Network_Train_Data[key][1]]) * 1)
 
     }
-    let negative_cost = [];
-    for (let jk = 0; jk < cost_data.length; jk++) {
-      negative_cost.push(-(cost_data[jk]))
-    }
-    console.log(negative_cost)
+
+    
     let new_cost = 0;
-    for (let gh = 0; gh < negative_cost.length; gh++) {
-      new_cost = new_cost + negative_cost[gh]
+    for (let gh = 0; gh < cost_data.length; gh++) {
+      new_cost = new_cost + cost_data[gh]
     }
 
-    new_cost = new_cost/m
+    new_cost = -(new_cost/m)
 
     console.log("the cost is " + new_cost)
     // this is used of dW3 calculation
@@ -259,14 +256,14 @@ function train_neural_network() {
     let xxdB1 = dB1.map((num) => num / m);
     dB1 = xxdB1;
     
-    console.log(dW3)
-    console.log(dB3)
+    //console.log(dW3)
+    //console.log(dB3)
     
-    console.log(dW2)
-    console.log(dB2)
+    //console.log(dW2)
+    //console.log(dB2)
     
-    console.log(dW1)
-    console.log(dB1)
+    //console.log(dW1)
+    //console.log(dB1)
 
 
     //last end of back prop
